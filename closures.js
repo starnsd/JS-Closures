@@ -35,8 +35,17 @@ var callFriend = function(){
 // Create a makeCall function that when invoked logs  'Calling Jake at 435-215-9248' in your console.
 
 
+    /* This is logging only the function. Why? */
 
+function makeCall( name, number ) {
+    return function(name, number) {
+        console.log( "Calling " + name + " at " + number + "." );
+    }
+}
 
+var jake = makeCall( "Jake", "435-215-9248" );
+
+console.log(jake);
 
 
 
@@ -44,19 +53,25 @@ var callFriend = function(){
 //////////////////PROBLEM 3////////////////////
 
 
+for ( var i = 0; i < 5; i++ ) {
+    var currentVal =  makeCounter ( i )
 
-/*
-  Write a function called makeCounter that makes the following code work properly.
-*/
+}
 
-//Code Here
+function makeCounter( index ) {
+    return function() {
+        console.log( index );
+    }
+}
+
+
 
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
+var count = makeCounter();
+count(); // 1
+count(); // 2
+count(); // 3
+count(); // 4
 
 
 
@@ -87,18 +102,18 @@ counter = counterFactory(10);
 //////////////////PROBLEM 5////////////////////
 
 
-// Inside the motivation function create another function called message that will return 'You're doing awesome, keep it up firstname lastname.'
+// Inside the motivation function create another function called message that
+// will return 'You're doing awesome, keep it up firstname lastname.'
 
   function motivation(firstname, lastname){
 
     var welcomeText = 'You\'re doing awesome, keep it up ';
 
-    // code message function here.
+    function message() {
+        return console.log(welcomeText + firstname + lastname)''
+    }
 
-
-    //Uncommment this to return the value of your invoked message function
-
-    //return message()
+    return message()
   }
 
   motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
